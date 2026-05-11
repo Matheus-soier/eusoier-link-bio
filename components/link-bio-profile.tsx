@@ -1,72 +1,8 @@
-"use client";
-
 import Image from "next/image";
-import {
-  Check,
-  Copy,
-  ExternalLink,
-  Link as LinkIcon,
-  Send,
-  Verified,
-} from "lucide-react";
-import { Globe2 } from "lucide-react";
-import { BrandInstagram } from "@/components/brand-icons";
-import { useState } from "react";
-import {
-  linkBioLinks,
-  linkBioProfile,
-  linkBioSocials,
-  type LinkBioItem,
-} from "@/lib/linktree-content";
-import { cn } from "@/components/ui/cn";
-
-const accentStyles: Record<LinkBioItem["accent"], string> = {
-  cyan: "bg-[#1a1a1a] text-white",
-  lime: "bg-[#1a1a1a] text-white",
-  fuchsia: "bg-[#1a1a1a] text-white",
-  violet: "bg-[#1a1a1a] text-white",
-};
-
-const getShareUrl = () => {
-  if (typeof window === "undefined") {
-    return linkBioProfile.profileUrl;
-  }
-
-  return `${window.location.origin}${linkBioProfile.fallbackProfileUrl}`;
-};
+import { Verified } from "lucide-react";
+import { linkBioProfile, linkBioSocials } from "@/lib/linktree-content";
 
 export const LinkBioProfile = () => {
-  const [copied, setCopied] = useState(false);
-  const [shareStatus, setShareStatus] = useState<"idle" | "shared" | "copied">(
-    "idle",
-  );
-
-  const copyProfile = async () => {
-    const shareUrl = getShareUrl();
-
-    await navigator.clipboard?.writeText(shareUrl);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
-  };
-
-  const shareProfile = async () => {
-    const shareUrl = getShareUrl();
-
-    if (navigator.share) {
-      await navigator.share({
-        title: `${linkBioProfile.name} ${linkBioProfile.handle}`,
-        text: linkBioProfile.bio,
-        url: shareUrl,
-      });
-      setShareStatus("shared");
-    } else {
-      await navigator.clipboard?.writeText(shareUrl);
-      setShareStatus("copied");
-    }
-
-    window.setTimeout(() => setShareStatus("idle"), 1800);
-  };
-
   return (
     <section className="min-h-screen bg-[#0a0a0a] pb-5 text-white">
       <article className="w-full overflow-hidden bg-[#0a0a0a] shadow-[0_18px_60px_rgba(0,0,0,0.4)]">
@@ -264,40 +200,6 @@ export const LinkBioProfile = () => {
             </div>
           </a>
 
-          <div className="mt-6 flex justify-center gap-3">
-            <button
-              type="button"
-              onClick={copyProfile}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-[10px] border border-[#2a2a2a] bg-transparent px-4 text-sm font-medium text-white transition hover:border-white hover:bg-white hover:text-[#0a0a0a]"
-              aria-label="Copiar link do perfil"
-            >
-              {copied ? <Check size={16} /> : <Copy size={16} />}
-              {copied ? "Copiado" : "Copiar"}
-            </button>
-            <button
-              type="button"
-              onClick={shareProfile}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-[10px] border border-[#2a2a2a] bg-transparent px-4 text-sm font-medium text-white transition hover:border-white hover:bg-white hover:text-[#0a0a0a]"
-              aria-label="Compartilhar perfil"
-            >
-              <Send size={16} />
-              Enviar
-            </button>
-          </div>
-
-          <div className="mt-5 flex items-center justify-between border-t border-[#2a2a2a] pt-4 text-xs text-[#9a9a9a]">
-            <span className="inline-flex items-center gap-2">
-              <LinkIcon size={15} />
-              eusoier.link
-            </span>
-            <span className="rounded-full bg-white px-3 py-1 font-medium text-[#0a0a0a]">
-              {shareStatus === "idle"
-                ? "ativo"
-                : shareStatus === "shared"
-                  ? "enviado"
-                  : "copiado"}
-            </span>
-          </div>
         </div>
 
       </article>
