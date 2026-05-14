@@ -159,7 +159,7 @@ export const LinkBioProfile = () => {
           </a>
 
           <a
-            href="https://www.rocketseat.com.br/eventos/aniversario-rocketseat?v=pro&utm_source=instagram&utm_medium=stories&utm_campaign=influencer&utm_term=aniversario-rocketseat-publico-ia&utm_content=inscricao_eusoier"
+            href="https://www.rocketseat.com.br/fluentia?coupon=EUSOIER"
             target="_blank"
             rel="noreferrer"
             className="group mt-5 block overflow-hidden rounded-[10px] border border-[#2a2a2a] bg-[#8257e5] text-left transition"
