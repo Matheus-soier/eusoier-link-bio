@@ -138,6 +138,27 @@ export const LinkBioProfile = () => {
           </a>
 
           <a
+            href="https://bit.ly/eusoier"
+            target="_blank"
+            rel="noreferrer"
+            className="group mt-5 block overflow-hidden rounded-[10px] border border-[#2a2a2a] bg-black text-left transition"
+            aria-label="Acessar o Dreamina IA"
+          >
+            <div className="overflow-hidden">
+              <Image
+                src="/linktree/dreamina.png"
+                alt="Dreamina IA"
+                width={760}
+                height={400}
+                className="h-auto w-full transition group-hover:scale-[1.04]"
+              />
+            </div>
+            <div className="flex items-center justify-center border-t border-[#2a2a2a] bg-[#111] px-4 py-3 text-sm font-semibold text-white transition">
+              Acesso ao site
+            </div>
+          </a>
+
+          <a
             href="https://www.hypercash.com.br/?utm_source=googleads&utm_medium=branding&matchtype=p&keyword=hypercash&utm_source=google&utm_medium=cpc&utm_campaign=22237028079&utm_adgroup=175018595717&utm_content=797054807247-&utm_term=hypercash&gad_source=1&gad_campaignid=22237028079&gbraid=0AAAAA-ae8gvBsf_xAdIOUhbJsdkfUfT1c&gclid=Cj0KCQjw2YDQBhD_ARIsAE1qeSfIQOMXk089LcXt6YSp2igLTEW4NU8v0GuymYcBU0wB82tXSX7CpmEaAjKlEALw_wcB"
             target="_blank"
             rel="noreferrer"
