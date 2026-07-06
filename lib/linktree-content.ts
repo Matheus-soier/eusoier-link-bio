@@ -31,7 +31,7 @@ export const linkBioProfile = {
   location: "São Paulo, Brasil",
   title: "IA aplicada a tráfego e growth",
   bio: "IA aplicada a tráfego e growth. Lista de espera, bastidores e automações para quem opera com performance.",
-  avatarSrc: "/linktree/instagram/profile.png",
+  avatarSrc: "/linktree/eusoier-perfil.png",
   profileUrl: "https://eusoier.link",
   fallbackProfileUrl: "/eusoier",
   instagramHref: "https://www.instagram.com/eusoier/",
