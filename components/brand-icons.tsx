@@ -40,23 +40,6 @@ export const IconSociosAI = ({ className }: RasterIconProps) => (
   />
 );
 
-export const IconMindloop = ({ size = 20, className }: RasterIconProps) => {
-  const width = size * 2.2;
-  const height = size * 1.6;
-  return (
-    <Image
-      src="/linktree/icon-mindloop.png"
-      alt=""
-      aria-hidden
-      width={Math.round(width * 2)}
-      height={Math.round(height * 2)}
-      unoptimized
-      className={className}
-      style={{ width, height, objectFit: "contain" }}
-    />
-  );
-};
-
 export const BrandInstagram = ({
   size = 20,
   className,

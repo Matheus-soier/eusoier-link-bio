@@ -96,27 +96,6 @@ export const LinkBioProfile = () => {
           </a>
 
           <a
-            href="https://www.mindloop.com.br/"
-            target="_blank"
-            rel="noreferrer"
-            className="group mt-5 block overflow-hidden rounded-[10px] border border-[#2a2a2a] bg-[#1a1a1a] text-left transition"
-            aria-label="Acessar o site Mindloop"
-          >
-            <div className="overflow-hidden">
-              <Image
-                src="/linktree/icon-mindloop.png"
-                alt="Mindloop"
-                width={760}
-                height={400}
-                className="h-auto w-full transition group-hover:scale-[1.04]"
-              />
-            </div>
-            <div className="flex items-center justify-center border-t border-[#2a2a2a] bg-[#111] px-4 py-3 text-sm font-semibold text-white transition">
-              Acesso ao site
-            </div>
-          </a>
-
-          <a
             href="https://hyperco.com.br/f/link-de-pagamento"
             target="_blank"
             rel="noreferrer"
