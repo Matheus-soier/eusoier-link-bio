@@ -92,7 +92,7 @@ export default function HomePage() {
               style={delay(0)}
             >
               <span className="rounded-full bg-accent/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-accent">
-                Novo
+                {announcement.tag}
               </span>
               {announcement.label}
               <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
@@ -156,7 +156,7 @@ export default function HomePage() {
               id="educacao"
               label="educação"
               title="Aprenda IA comigo"
-              description="Do curso em grupo à mentoria individual ou para o seu time."
+              description="Do curso gravado à mentoria individual ou para o seu time."
             />
           </Reveal>
 

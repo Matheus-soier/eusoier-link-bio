@@ -47,8 +47,9 @@ export const profile = {
 };
 
 export const announcement = {
-  label: "Turma 04 da Sinapse School · lista de espera aberta",
-  href: "https://snps.ai/educacional",
+  tag: "Curso",
+  label: "Sinapse School · 14 missões de IA aplicada",
+  href: "https://school.snps.ai/matheus",
 };
 
 export const topics = [
@@ -64,13 +65,13 @@ export const topics = [
 export const school = {
   name: "Sinapse School",
   logo: { src: "/brand/snps-wordmark.png", width: 540, height: 84 },
-  tag: "Curso · Turma 04",
-  headline: "Aprenda a operar IA pra construir qualquer coisa, do zero.",
+  tag: "Curso gravado",
+  headline: "Do primeiro prompt ao projeto rodando.",
   description:
-    "Mentoria em grupo ao vivo: IA do básico ao avançado com o repertório de marketing aplicado em cada call.",
-  stats: ["8 calls ao vivo", "4 semanas", "100+ formados"],
-  cta: "Entrar na lista de espera",
-  href: "https://snps.ai/educacional",
+    "14 missões gravadas de IA aplicada com Claude Code, Codex, Ollama e as ferramentas que constroem de verdade: projetos pra vender e automações pro seu negócio.",
+  stats: ["14 missões", "100% gravado", "Acesso vitalício"],
+  cta: "Começar as missões",
+  href: "https://school.snps.ai/matheus",
   cover: "/linktree/sinapse-club.png",
 };
 
