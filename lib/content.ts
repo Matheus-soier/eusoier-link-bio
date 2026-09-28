@@ -1,3 +1,5 @@
+import type { Brand } from "@/components/site/brand-icons";
+
 const WHATSAPP_NUMBER = "5511975403881";
 
 export const whatsappLink = (message: string) =>
@@ -7,6 +9,7 @@ export type LinkItem = {
   name: string;
   meta: string;
   href: string;
+  brand?: Brand;
 };
 
 export const profile = {
@@ -57,12 +60,23 @@ export const partner = {
 };
 
 export const socials: LinkItem[] = [
-  { name: "Instagram", meta: "@eusoier", href: "https://www.instagram.com/eusoier/" },
-  { name: "YouTube", meta: "@eusoier", href: "https://www.youtube.com/@eusoier/videos" },
-  { name: "X", meta: "@eusoier", href: "https://x.com/eusoier" },
+  {
+    name: "Instagram",
+    meta: "@eusoier",
+    href: "https://www.instagram.com/eusoier/",
+    brand: "instagram",
+  },
+  {
+    name: "YouTube",
+    meta: "@eusoier",
+    href: "https://www.youtube.com/@eusoier/videos",
+    brand: "youtube",
+  },
+  { name: "X", meta: "@eusoier", href: "https://x.com/eusoier", brand: "x" },
   {
     name: "Comunidade",
     meta: "WhatsApp",
     href: "https://chat.whatsapp.com/LRLVSVm9WIDEgWNbnQVf0X?mode=gi_t",
+    brand: "whatsapp",
   },
 ];

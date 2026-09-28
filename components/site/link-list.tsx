@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import type { LinkItem } from "@/lib/content";
 import { cn } from "@/components/ui/cn";
+import { BRANDS, BrandIcon } from "@/components/site/brand-icons";
 
 type LinkListProps = {
   items: LinkItem[];
@@ -21,6 +22,14 @@ export const LinkList = ({ items, numbered = false, className }: LinkListProps) 
           {numbered && (
             <span className="w-5 font-mono text-[10px] text-ink/35">
               {String(i + 1).padStart(2, "0")}
+            </span>
+          )}
+          {item.brand && (
+            <span
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink transition-colors duration-300 group-hover:text-[var(--brand)]"
+              style={{ "--brand": BRANDS[item.brand].color } as React.CSSProperties}
+            >
+              <BrandIcon brand={item.brand} size={16} />
             </span>
           )}
           <span className="flex min-w-0 flex-1 flex-col">

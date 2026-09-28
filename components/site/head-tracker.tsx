@@ -97,7 +97,9 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
           candidate &&
           angleDistance(active.angle, angle) <
             angleDistance(candidate.angle, angle) + HYSTERESIS_DEG;
-        next = keep ? active : candidate;
+        // While sprites are still loading, a far-off direction is worse than looking ahead.
+        const close = candidate && angleDistance(candidate.angle, angle) <= 30;
+        next = keep ? active : close ? candidate : null;
       }
 
       // State change: remember what is on screen and fade out of it.

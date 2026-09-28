@@ -6,6 +6,7 @@ import { education, profile, socials } from "@/lib/content";
 import { cn } from "@/components/ui/cn";
 import { LinkList } from "@/components/site/link-list";
 import { PartnerCard } from "@/components/site/partner-card";
+import { BRANDS, BrandIcon } from "@/components/site/brand-icons";
 
 const Label = ({ children }: { children: React.ReactNode }) => (
   <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/45">{children}</p>
@@ -90,9 +91,17 @@ export const MobileMenu = () => {
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-between rounded-xl border border-ink/10 bg-white/60 px-3.5 py-3 text-[14px] font-medium tracking-[-0.02em] text-ink transition-colors active:bg-white"
+                    className="flex items-center gap-2.5 rounded-xl border border-ink/10 bg-white/60 px-3.5 py-3 text-[14px] font-medium tracking-[-0.02em] text-ink transition-colors active:bg-white"
                   >
-                    {social.name}
+                    {social.brand && (
+                      <BrandIcon
+                        brand={social.brand}
+                        size={16}
+                        className="shrink-0"
+                        style={{ color: BRANDS[social.brand].color }}
+                      />
+                    )}
+                    <span className="flex-1">{social.name}</span>
                     <ArrowUpRight size={14} className="text-ink/40" />
                   </a>
                 </li>

@@ -29,9 +29,7 @@ export const ScrambleText = ({ text, delay = 0, className }: ScrambleTextProps) 
         text
           .split("")
           .map((char, i) =>
-            char === " " || i < revealed
-              ? char
-              : GLYPHS[Math.floor(Math.random() * GLYPHS.length)],
+            char === " " || i < revealed ? char : GLYPHS[Math.floor(Math.random() * GLYPHS.length)],
           )
           .join(""),
       );
