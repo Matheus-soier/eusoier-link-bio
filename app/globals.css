@@ -74,16 +74,6 @@ body::before {
   }
 }
 
-.blink {
-  animation: blink 1.6s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0.25;
-  }
-}
-
 /* Soft accent glow behind the hero */
 body::after {
   content: "";

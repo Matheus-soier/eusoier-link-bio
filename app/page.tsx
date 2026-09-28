@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Building2, MessageCircle, UserRound } from "lucide-react";
-import { Clock } from "@/components/site/clock";
 import { Portrait } from "@/components/site/portrait";
 import { Reveal } from "@/components/site/reveal";
 import { ScrambleText } from "@/components/site/scramble-text";
@@ -68,11 +67,7 @@ export default function HomePage() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
-            <span className="hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted sm:flex">
-              <span className="blink h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-              SP <Clock />
-            </span>
+          <div className="flex items-center">
             <a
               href={profile.contactHref}
               target="_blank"
@@ -340,19 +335,10 @@ export default function HomePage() {
                 Vamos construir com IA?
               </h2>
               <p className="mx-auto mt-4 max-w-md text-muted">
-                Mentorias, parcerias e projetos: fala direto comigo no WhatsApp.
+                Me acompanhe nas redes e entre na comunidade.
               </p>
-              <a
-                href={profile.contactHref}
-                target="_blank"
-                rel="noreferrer"
-                className="group mt-9 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-black transition-[filter] hover:brightness-110"
-              >
-                <MessageCircle size={16} />
-                Chamar no WhatsApp
-              </a>
 
-              <div className="mt-12 flex flex-wrap justify-center gap-2">
+              <div className="mt-10 flex flex-wrap justify-center gap-2">
                 {socials.map((social) => (
                   <a
                     key={social.label}
