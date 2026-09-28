@@ -18,8 +18,6 @@ export const MobileMenu = () => {
   const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    // Lets the head animation pause while the sheet covers it.
-    window.dispatchEvent(new CustomEvent("sheet-toggle", { detail: open }));
     if (!open) return;
     // Focus once the sheet has slid in; preventScroll stops iOS from jumping the page.
     const focus = window.setTimeout(() => closeRef.current?.focus({ preventScroll: true }), 450);
