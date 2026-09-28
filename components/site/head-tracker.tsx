@@ -110,12 +110,15 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
 
       // State change: remember what is on screen and fade out of it.
       if (next !== active) {
+        layerContext.clearRect(0, 0, layer.width, layer.height);
         layerContext.drawImage(canvas, 0, 0);
         fadeStart = now;
         active = next;
       }
 
+      // Frames have a transparent background, so the name marquee stays behind the head.
       context.globalAlpha = 1;
+      context.clearRect(0, 0, canvas.width, canvas.height);
       if (!active) {
         context.drawImage(center, 0, 0, canvas.width, canvas.height);
       } else {

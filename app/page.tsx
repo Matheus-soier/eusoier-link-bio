@@ -34,7 +34,7 @@ export default function HomePage() {
 
       {/* Head that turns toward the pointer, anchored to the bottom and centered */}
       <div
-        className="reveal absolute bottom-0 left-1/2 aspect-[960/860] h-[76dvh] -translate-x-1/2 mix-blend-multiply md:h-[86dvh] md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_bottom,#000_60%,transparent_95%),linear-gradient(to_right,transparent,#000_18%,#000_82%,transparent)]"
+        className="reveal absolute bottom-0 left-1/2 aspect-[960/860] h-[76dvh] -translate-x-1/2 md:h-[86dvh] md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_bottom,#000_60%,transparent_95%),linear-gradient(to_right,transparent,#000_18%,#000_82%,transparent)]"
         style={delay(150)}
       >
         <HeadTracker alt={`Foto de ${profile.name}`} className="absolute inset-0" />
