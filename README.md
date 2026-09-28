@@ -1,6 +1,6 @@
 # eusoier-link-bio
 
-Link na bio do [@eusoier](https://instagram.com/eusoier) — Matheus Soier, IA aplicada a tráfego e growth.
+Portfólio pessoal do [@eusoier](https://instagram.com/eusoier) — Matheus Soier, IA aplicada a tráfego e growth.
 
 Online em **[eusoier.link](https://eusoier.link)**.
 
@@ -25,16 +25,18 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ```
 app/
-  layout.tsx          # Root layout + metadata
-  page.tsx            # Renderiza o LinkBioProfile
-  globals.css         # Tailwind + variáveis CSS
-components/
-  link-bio-profile.tsx  # Componente principal da página
-  brand-icons.tsx       # Ícones de marca (WhatsApp, Instagram, etc.)
-  ui/cn.ts              # Helper clsx + tailwind-merge
+  layout.tsx            # Root layout, fontes (Geist / Geist Mono) e metadata
+  page.tsx              # Página única: hero, /projetos, /conteudo, /contato
+  globals.css           # Tokens de cor, grid de pontos e animações
+components/site/
+  clock.tsx             # Relógio ao vivo (horário de São Paulo)
+  scramble-text.tsx     # Efeito de "decodificação" do texto
+  project-list.tsx      # Lista de projetos com preview que segue o cursor
+  portrait.tsx          # Retrato P&B com scanlines
+components/ui/cn.ts     # Helper clsx + tailwind-merge
 lib/
-  linktree-content.ts   # Conteúdo: perfil, redes sociais, links
-public/linktree/        # Avatares, capas, logos dos cards
+  content.ts            # Todo o conteúdo: perfil, projetos, redes, posts
+public/linktree/        # Foto, capas dos projetos e thumbs do Instagram
 ```
 
-Para editar links, perfil ou redes sociais, ajuste `lib/linktree-content.ts` e os blocos de cards em `components/link-bio-profile.tsx`.
+Para editar textos, projetos ou redes sociais, ajuste apenas `lib/content.ts`.

@@ -1,53 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #eff6ff;
-  --surface: #f8fafc;
-  --surface-strong: #e2e8f0;
-  --ink: #0f172a;
-  --muted: #475569;
-  --brand-cyan: #75f3ff;
-  --brand-lime: #b6ff4f;
-  --brand-fuchsia: #e73fd4;
-  --brand-violet: #7858ff;
+  --bg: #080808;
+  --fg: #ededed;
+  --muted: #7d7d7d;
+  --faint: #2a2a2a;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #c6ff3d;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-surface-strong: var(--surface-strong);
-  --color-ink: var(--ink);
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
   --color-muted: var(--muted);
-  --color-brand-cyan: var(--brand-cyan);
-  --color-brand-lime: var(--brand-lime);
-  --color-brand-fuchsia: var(--brand-fuchsia);
-  --color-brand-violet: var(--brand-violet);
-  --font-sans: var(--font-space-grotesk);
-  --font-serif: var(--font-cormorant);
-}
-
-* {
-  box-sizing: border-box;
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 html {
-  background: var(--background);
+  background: var(--bg);
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-space-grotesk), sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-  text-decoration: none;
+/* Dot grid, faded out toward the bottom */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
 }
 
 ::selection {
-  background: rgba(117, 243, 255, 0.25);
+  background: var(--accent);
+  color: #000;
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.blink {
+  animation: blink 1.6s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
