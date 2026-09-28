@@ -6,6 +6,7 @@
   --muted: #7d7d7d;
   --faint: #2a2a2a;
   --line: rgba(255, 255, 255, 0.08);
+  --card: #0e0e0e;
   --accent: #c6ff3d;
 }
 
@@ -15,6 +16,7 @@
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-line: var(--line);
+  --color-card: var(--card);
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -23,6 +25,8 @@
 html {
   background: var(--bg);
   color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -30,6 +34,8 @@ body {
   color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: clip;
 }
 
 /* Dot grid, faded out toward the bottom */
@@ -78,6 +84,55 @@ body::before {
   }
 }
 
+/* Soft accent glow behind the hero */
+body::after {
+  content: "";
+  position: absolute;
+  top: -20rem;
+  left: 50%;
+  z-index: -1;
+  width: 60rem;
+  height: 40rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(198, 255, 61, 0.07), transparent);
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.scan-beam {
+  top: -6rem;
+  background: linear-gradient(180deg, transparent, rgba(198, 255, 61, 0.14), transparent);
+  animation: scan 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes scan {
+  to {
+    top: 100%;
+  }
+}
+
+.ticker-track {
+  animation: ticker 40s linear infinite;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -86,5 +141,12 @@ body::before {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

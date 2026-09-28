@@ -1,34 +1,52 @@
 import Image from "next/image";
 
 const corners = [
-  "left-0 top-0 border-l border-t",
-  "right-0 top-0 border-r border-t",
-  "bottom-0 left-0 border-b border-l",
-  "bottom-0 right-0 border-b border-r",
+  "-left-1.5 -top-1.5 border-l border-t",
+  "-right-1.5 -top-1.5 border-r border-t",
+  "-bottom-1.5 -left-1.5 border-b border-l",
+  "-bottom-1.5 -right-1.5 border-b border-r",
 ];
 
-export const Portrait = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="relative h-[92px] w-[92px] p-1.5">
+type PortraitProps = {
+  src: string;
+  alt: string;
+  caption: string;
+  location: string;
+};
+
+export const Portrait = ({ src, alt, caption, location }: PortraitProps) => (
+  <div className="relative w-[220px] sm:w-[250px]">
     {corners.map((position) => (
       <span
         key={position}
         aria-hidden="true"
-        className={`absolute h-2.5 w-2.5 border-fg/60 ${position}`}
+        className={`absolute h-3 w-3 border-fg/50 ${position}`}
       />
     ))}
-    <div className="relative h-full w-full overflow-hidden">
+
+    <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-line bg-card">
       <Image
         src={src}
         alt={alt}
         fill
         priority
-        sizes="80px"
-        className="object-cover brightness-[0.8] grayscale contrast-125"
+        sizes="250px"
+        className="scale-110 object-cover object-[50%_30%] brightness-[0.72] grayscale contrast-[1.35]"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.35)_0px,rgba(0,0,0,0.35)_1px,transparent_1px,transparent_3px)]"
+        className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.4)_0px,rgba(0,0,0,0.4)_1px,transparent_1px,transparent_3px)]"
       />
+      <div aria-hidden="true" className="scan-beam absolute inset-x-0 h-24" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"
+      />
+
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3 font-mono text-[10px] uppercase tracking-[0.14em]">
+        <span className="text-fg">{caption}</span>
+        <span className="text-muted">{location}</span>
+      </div>
     </div>
   </div>
 );
