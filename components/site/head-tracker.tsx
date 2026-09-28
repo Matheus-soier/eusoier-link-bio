@@ -13,19 +13,20 @@ import head from "@/lib/head-manifest.json";
 // last drawn image, so an in-between blend never lingers on screen.
 const BASE = "/head/";
 const FACE = { x: 0.507, y: 0.44 };
-const EASE = 0.09;
+const EASE = 0.075;
 const STATE_FADE_MS = 180;
 const DEAD_ZONE = 0.14;
 const HYSTERESIS_DEG = 10;
 
 type Size = keyof typeof head.sizes;
-type Direction = { angle: number; frames: number; image: HTMLImageElement };
+type Direction = { angle: number; frames: number; image: CanvasImageSource };
 
-const loadImage = async (src: string) => {
+// Decode up front into GPU-ready bitmaps so drawing never stalls on a lazy decode.
+const loadImage = async (src: string): Promise<CanvasImageSource> => {
   const image = new window.Image();
   image.src = src;
   await image.decode();
-  return image;
+  return "createImageBitmap" in window ? createImageBitmap(image) : image;
 };
 
 // Smallest absolute difference between two angles, in degrees.
@@ -48,7 +49,7 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
     const layerContext = layer.getContext("2d");
     if (!layerContext) return;
 
-    let center: HTMLImageElement | null = null;
+    let center: CanvasImageSource | null = null;
     const directions: Direction[] = [];
     const target = { x: 0, y: 0 };
     const current = { x: 0, y: 0 };
