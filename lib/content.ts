@@ -29,6 +29,11 @@ export const education: LinkItem[] = [
     href: "https://school.snps.ai/matheus",
   },
   {
+    name: "Guias gratuitos",
+    meta: "Grátis · passo a passo",
+    href: "https://snps.ai/guias",
+  },
+  {
     name: "Mentoria 1:1",
     meta: "Individual · WhatsApp",
     href: whatsappLink(
