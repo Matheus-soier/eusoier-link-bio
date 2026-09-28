@@ -1,0 +1,144 @@
+{
+  "center": "center.webp",
+  "frameWidth": 960,
+  "frameHeight": 860,
+  "frames": 10,
+  "directions": [
+    {
+      "id": "right",
+      "angle": 0,
+      "src": "right.webp",
+      "indices": [
+        24,
+        26,
+        29,
+        31,
+        33,
+        36,
+        38,
+        40,
+        43,
+        45
+      ]
+    },
+    {
+      "id": "down-right",
+      "angle": 45,
+      "src": "down-right.webp",
+      "indices": [
+        27,
+        30,
+        34,
+        37,
+        40,
+        44,
+        47,
+        50,
+        54,
+        57
+      ]
+    },
+    {
+      "id": "down",
+      "angle": 90,
+      "src": "down.webp",
+      "indices": [
+        24,
+        28,
+        33,
+        37,
+        41,
+        46,
+        50,
+        54,
+        59,
+        63
+      ]
+    },
+    {
+      "id": "down-left",
+      "angle": 135,
+      "src": "down-left.webp",
+      "indices": [
+        30,
+        33,
+        37,
+        40,
+        43,
+        47,
+        50,
+        53,
+        57,
+        60
+      ]
+    },
+    {
+      "id": "left",
+      "angle": 180,
+      "src": "left.webp",
+      "indices": [
+        35,
+        37,
+        39,
+        40,
+        42,
+        44,
+        46,
+        47,
+        49,
+        51
+      ]
+    },
+    {
+      "id": "up-left",
+      "angle": -135,
+      "src": "up-left.webp",
+      "indices": [
+        33,
+        35,
+        37,
+        39,
+        41,
+        43,
+        45,
+        47,
+        49,
+        51
+      ]
+    },
+    {
+      "id": "up",
+      "angle": -90,
+      "src": "up.webp",
+      "indices": [
+        18,
+        23,
+        28,
+        33,
+        38,
+        43,
+        48,
+        53,
+        58,
+        63
+      ]
+    },
+    {
+      "id": "up-right",
+      "angle": -45,
+      "src": "up-right.webp",
+      "indices": [
+        24,
+        26,
+        29,
+        31,
+        33,
+        36,
+        38,
+        40,
+        43,
+        45
+      ]
+    }
+  ]
+}

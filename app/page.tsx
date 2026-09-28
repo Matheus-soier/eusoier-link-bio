@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { LinkList } from "@/components/site/link-list";
 import { MobileMenu } from "@/components/site/mobile-menu";
-import { EyeTracker } from "@/components/site/eye-tracker";
+import { HeadTracker } from "@/components/site/head-tracker";
 import { PartnerCard } from "@/components/site/partner-card";
 import { ScrambleText } from "@/components/site/scramble-text";
 import { education, profile, socials } from "@/lib/content";
@@ -33,20 +32,12 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Photo, anchored to the bottom and centered */}
+      {/* Head that turns toward the pointer, anchored to the bottom and centered */}
       <div
-        className="reveal absolute bottom-0 left-1/2 aspect-[2160/1837] h-[70dvh] -translate-x-1/2 md:h-[86dvh]"
+        className="reveal absolute bottom-0 left-1/2 aspect-[960/860] h-[76dvh] -translate-x-1/2 mix-blend-multiply md:h-[86dvh] md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_bottom,#000_60%,transparent_95%),linear-gradient(to_right,transparent,#000_18%,#000_82%,transparent)]"
         style={delay(150)}
       >
-        <Image
-          src={profile.photo.src}
-          alt={`Foto de ${profile.name}`}
-          fill
-          priority
-          sizes="(min-width: 768px) 100vh, 85vh"
-          className="object-contain object-bottom md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_bottom,#000_60%,transparent_95%),linear-gradient(to_right,transparent,#000_18%,#000_82%,transparent)]"
-        />
-        <EyeTracker />
+        <HeadTracker alt={`Foto de ${profile.name}`} className="absolute inset-0" />
       </div>
 
       {/* Top bar */}

@@ -17,7 +17,6 @@ export const profile = {
   bio: "Para quem quer entender, aplicar e lucrar com IA antes da maioria.",
   location: "São Paulo, BR",
   coordinates: "23.55°S 46.63°W",
-  photo: { src: "/brand/matheus.webp", width: 1600, height: 1361 },
   url: "https://matheussoier.com",
   contactHref: whatsappLink("Olá, Matheus! Vim pelo seu site e queria conversar com você."),
 };
