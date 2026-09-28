@@ -18,11 +18,17 @@ export const MobileMenu = () => {
   const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    // Lets the head animation pause while the sheet covers it.
+    window.dispatchEvent(new CustomEvent("sheet-toggle", { detail: open }));
     if (!open) return;
-    closeRef.current?.focus();
+    // Focus once the sheet has slid in; preventScroll stops iOS from jumping the page.
+    const focus = window.setTimeout(() => closeRef.current?.focus({ preventScroll: true }), 450);
     const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(focus);
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   return (
@@ -42,7 +48,7 @@ export const MobileMenu = () => {
         aria-hidden="true"
         onClick={() => setOpen(false)}
         className={cn(
-          "absolute inset-0 z-40 bg-ink/15 backdrop-blur-[2px] transition-opacity duration-300",
+          "absolute inset-0 z-40 bg-ink/20 transition-opacity duration-300",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       />
@@ -54,7 +60,7 @@ export const MobileMenu = () => {
         aria-label="Links"
         inert={!open}
         className={cn(
-          "glass-light absolute inset-x-2 bottom-2 z-50 flex max-h-[82dvh] flex-col rounded-[28px] transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]",
+          "glass-light absolute inset-x-2 bottom-2 z-50 flex max-h-[82dvh] flex-col rounded-[28px] transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-transform",
           open ? "translate-y-0" : "translate-y-[110%]",
         )}
       >

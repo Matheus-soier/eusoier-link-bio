@@ -57,6 +57,7 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
     let fadeStart = -Infinity;
     let raf = 0;
     let idle = 0;
+    let paused = false;
     let disposed = false;
 
     const drawSprite = (ctx: CanvasRenderingContext2D, direction: Direction, index: number) => {
@@ -143,7 +144,7 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
     };
 
     const start = () => {
-      if (!raf) raf = requestAnimationFrame(tick);
+      if (!raf && !paused) raf = requestAnimationFrame(tick);
     };
 
     const lookAt = (x: number, y: number) => {
@@ -171,14 +172,38 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
 
     const handleLeave = () => lookAt(0, 0);
 
+    // Touch screens get idle glances instead of following taps (a tap on a button
+    // shouldn't swing the head), and everything pauses while the mobile sheet is open.
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const glance = () => {
+      if (paused) return;
+      const angle = Math.random() * Math.PI * 2;
+      const reach = Math.random() < 0.3 ? 0 : 0.45 + Math.random() * 0.55;
+      lookAt(Math.cos(angle) * reach, Math.sin(angle) * reach);
+      idle = window.setTimeout(glance, 1800 + Math.random() * 2400);
+    };
+
+    const handleSheet = (event: Event) => {
+      paused = (event as CustomEvent<boolean>).detail;
+      window.clearTimeout(idle);
+      if (paused) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      } else if (!finePointer && directions.length) {
+        idle = window.setTimeout(glance, 1200);
+      }
+    };
+    window.addEventListener("sheet-toggle", handleSheet);
+
     (async () => {
       center = await loadImage(`${BASE}${head.center[size]}`);
       if (disposed) return;
       resize();
       setLive(true);
-      window.addEventListener("pointermove", handlePointer);
-      window.addEventListener("pointerdown", handlePointer);
-      document.documentElement.addEventListener("pointerleave", handleLeave);
+      if (finePointer) {
+        window.addEventListener("pointermove", handlePointer);
+        document.documentElement.addEventListener("pointerleave", handleLeave);
+      }
 
       // Sprites stream in after the first paint; each direction works as soon as it lands.
       await Promise.all(
@@ -191,16 +216,7 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
       );
       if (disposed) return;
       start();
-
-      if (!window.matchMedia("(pointer: fine)").matches) {
-        const glance = () => {
-          const angle = Math.random() * Math.PI * 2;
-          const reach = Math.random() < 0.3 ? 0 : 0.45 + Math.random() * 0.55;
-          lookAt(Math.cos(angle) * reach, Math.sin(angle) * reach);
-          idle = window.setTimeout(glance, 1800 + Math.random() * 2400);
-        };
-        idle = window.setTimeout(glance, 1200);
-      }
+      if (!finePointer && !paused) idle = window.setTimeout(glance, 1200);
     })();
 
     const observer = new ResizeObserver(resize);
@@ -211,8 +227,8 @@ export const HeadTracker = ({ alt, className }: { alt: string; className?: strin
       cancelAnimationFrame(raf);
       window.clearTimeout(idle);
       observer.disconnect();
+      window.removeEventListener("sheet-toggle", handleSheet);
       window.removeEventListener("pointermove", handlePointer);
-      window.removeEventListener("pointerdown", handlePointer);
       document.documentElement.removeEventListener("pointerleave", handleLeave);
     };
   }, []);
