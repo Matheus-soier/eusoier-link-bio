@@ -1,63 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #080808;
-  --fg: #ededed;
-  --muted: #7d7d7d;
-  --faint: #2a2a2a;
-  --line: rgba(255, 255, 255, 0.08);
-  --card: #0e0e0e;
+  --bg: #ffffff;
+  --ink: #0a0a0a;
   --accent: #c6ff3d;
 }
 
 @theme inline {
   --color-bg: var(--bg);
-  --color-fg: var(--fg);
-  --color-muted: var(--muted);
-  --color-faint: var(--faint);
-  --color-line: var(--line);
-  --color-card: var(--card);
+  --color-ink: var(--ink);
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-html {
-  background: var(--bg);
-  color-scheme: dark;
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+/* Single-screen layout: the page itself never scrolls */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 body {
   background: var(--bg);
-  color: var(--fg);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  position: relative;
-  overflow-x: clip;
-}
-
-/* Dot grid, faded out toward the bottom */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
 }
 
 ::selection {
-  background: var(--accent);
-  color: #000;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* Liquid glass over dark content (the mobile tab) */
+.glass-dark {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.06));
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08),
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Liquid glass sheet */
+.glass-light {
+  background: rgba(255, 255, 255, 0.74);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(10, 10, 10, 0.05),
+    0 24px 60px rgba(0, 0, 0, 0.2);
 }
 
 .reveal {
   opacity: 0;
-  animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation: reveal 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   animation-delay: var(--delay, 0ms);
 }
 
@@ -65,61 +68,12 @@ body::before {
   from {
     opacity: 0;
     transform: translateY(12px);
-    filter: blur(6px);
+    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: none;
     filter: none;
-  }
-}
-
-/* Soft accent glow behind the hero */
-body::after {
-  content: "";
-  position: absolute;
-  top: -20rem;
-  left: 50%;
-  z-index: -1;
-  width: 60rem;
-  height: 40rem;
-  transform: translateX(-50%);
-  pointer-events: none;
-  background: radial-gradient(closest-side, rgba(198, 255, 61, 0.07), transparent);
-}
-
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-.scan-beam {
-  top: -6rem;
-  background: linear-gradient(180deg, transparent, rgba(198, 255, 61, 0.14), transparent);
-  animation: scan 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-@keyframes scan {
-  to {
-    top: 100%;
-  }
-}
-
-.ticker-track {
-  animation: ticker 40s linear infinite;
-}
-
-@keyframes ticker {
-  to {
-    transform: translateX(-50%);
   }
 }
 
@@ -129,14 +83,11 @@ body::after {
   ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 
-  .reveal,
-  .scroll-reveal {
+  .reveal {
     opacity: 1;
-    transform: none;
     animation: none;
   }
 }

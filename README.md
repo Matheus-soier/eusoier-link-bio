@@ -23,20 +23,24 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ## Estrutura
 
+Página única, sem scroll (100dvh × 100vw): foto centralizada sobre fundo branco,
+educação à esquerda, parceiro e redes à direita. No mobile, os links ficam numa
+aba em liquid glass aberta pelo botão "Explorar".
+
 ```
 app/
   layout.tsx            # Root layout, fontes (Geist / Geist Mono) e metadata
-  page.tsx              # Página única: hero, /projetos, /conteudo, /contato
-  globals.css           # Tokens de cor, grid de pontos e animações
+  page.tsx              # Layout da tela única (desktop + mobile)
+  globals.css           # Tokens, liquid glass e animações
 components/site/
-  clock.tsx             # Relógio ao vivo (horário de São Paulo)
+  link-list.tsx         # Lista de links com seta e sublinhado no hover
+  partner-card.tsx      # Card do parceiro (Hyper)
+  mobile-menu.tsx       # Botão "Explorar" + aba com todos os links (mobile)
   scramble-text.tsx     # Efeito de "decodificação" do texto
-  project-list.tsx      # Lista de projetos com preview que segue o cursor
-  portrait.tsx          # Retrato P&B com scanlines
 components/ui/cn.ts     # Helper clsx + tailwind-merge
 lib/
-  content.ts            # Todo o conteúdo: perfil, projetos, redes, posts
-public/linktree/        # Foto, capas dos projetos e thumbs do Instagram
+  content.ts            # Todo o conteúdo: perfil, educação, parceiro, redes
+public/brand/           # Foto recortada, logos da Hyper e da SNPS
 ```
 
-Para editar textos, projetos ou redes sociais, ajuste apenas `lib/content.ts`.
+Para editar textos ou links, ajuste apenas `lib/content.ts`.
