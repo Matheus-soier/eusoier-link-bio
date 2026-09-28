@@ -56,7 +56,7 @@ export default function HomePage() {
       <header className="sticky top-0 z-40 border-b border-line bg-bg/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
           <a href="#" className="font-mono text-[12px] uppercase tracking-[0.16em] text-fg">
-            eusoier<span className="text-accent">.</span>link
+            matheussoier<span className="text-accent">.</span>com
           </a>
 
           <nav className="hidden items-center gap-7 text-sm text-muted md:flex">

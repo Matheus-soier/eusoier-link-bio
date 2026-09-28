@@ -41,7 +41,7 @@ export const profile = {
   location: "São Paulo, BR",
   coordinates: "23.55°S 46.63°W",
   portrait: "/linktree/eusoier-perfil.png",
-  url: "https://eusoier.link",
+  url: "https://matheussoier.com",
   instagram: "https://www.instagram.com/eusoier/",
   contactHref: whatsappLink("Olá, Matheus! Vim pelo seu site e queria conversar com você."),
 };

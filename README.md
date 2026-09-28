@@ -2,7 +2,7 @@
 
 Portfólio pessoal do [@eusoier](https://instagram.com/eusoier) — Matheus Soier, IA aplicada a tráfego e growth.
 
-Online em **[eusoier.link](https://eusoier.link)**.
+Online em **[matheussoier.com](https://matheussoier.com)**.
 
 ## Stack
 
