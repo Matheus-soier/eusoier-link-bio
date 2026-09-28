@@ -58,22 +58,6 @@ body {
     0 24px 60px rgba(0, 0, 0, 0.2);
 }
 
-/* Pointer-driven depth layers (values come from <Parallax>) */
-.depth-back {
-  transform: translate3d(calc(var(--mx, 0) * -28px), calc(var(--my, 0) * -14px), 0);
-}
-
-.depth-photo {
-  transform-origin: 50% 100%;
-  transform: perspective(1400px) rotateY(calc(var(--mx, 0) * 5deg))
-    rotateX(calc(var(--my, 0) * -3deg))
-    translate3d(calc(var(--mx, 0) * 14px), calc(var(--my, 0) * 6px), 0);
-}
-
-.depth-front {
-  transform: translate3d(calc(var(--mx, 0) * 10px), calc(var(--my, 0) * 6px), 0);
-}
-
 .marquee-track {
   animation: marquee 45s linear infinite;
 }
