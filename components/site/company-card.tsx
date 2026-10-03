@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { company } from "@/lib/content";
 
@@ -8,13 +9,15 @@ export const CompanyCard = () => (
     rel="noopener noreferrer"
     className="company-card group block rounded-2xl bg-ink p-4 text-white outline-none transition-colors hover:bg-ink/90 focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-4 active:bg-ink/80 motion-reduce:transition-none"
   >
-    <p className="company-eyebrow font-mono text-[10px] uppercase tracking-[0.16em] text-white/65">
-      {company.label}
-    </p>
-    <h2 className="company-name mt-2 text-[22px] font-semibold leading-tight tracking-[-0.035em]">
-      {company.name}
-    </h2>
-    <p className="mt-1 max-w-[17rem] text-[14px] leading-snug text-white/85">
+    <Image
+      src={company.logo.src}
+      alt={company.name}
+      width={company.logo.width}
+      height={company.logo.height}
+      unoptimized
+      className="h-auto w-[240px] max-w-full brightness-0 invert"
+    />
+    <p className="mt-3 max-w-[17rem] text-[14px] leading-snug text-white/85">
       {company.tagline}
     </p>
     <div className="company-cta mt-4 flex items-center justify-between gap-3 border-t border-white/20 pt-3">
