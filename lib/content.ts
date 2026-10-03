@@ -26,11 +26,6 @@ export const profile = {
 
 export const education: LinkItem[] = [
   {
-    name: "Sinapse School",
-    meta: "Curso gravado",
-    href: "https://school.snps.ai/matheus",
-  },
-  {
     name: "Guias gratuitos",
     meta: "Grátis · passo a passo",
     href: "https://snps.ai/guias",
@@ -50,6 +45,14 @@ export const education: LinkItem[] = [
     ),
   },
 ];
+
+export const company = {
+  name: "SINAPSE AI",
+  tagline: "A Nova Era da Super Inteligência",
+  label: "Minha empresa",
+  cta: "Conhecer a SINAPSE",
+  href: "https://sinapse.si/",
+};
 
 export const partner = {
   name: "Hyper",
