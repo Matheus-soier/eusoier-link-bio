@@ -6,6 +6,7 @@ import { education, profile, socials } from "@/lib/content";
 import { cn } from "@/components/ui/cn";
 import { LinkList } from "@/components/site/link-list";
 import { PartnerCard } from "@/components/site/partner-card";
+import { CompanyCard } from "@/components/site/company-card";
 import { BRANDS, BrandIcon } from "@/components/site/brand-icons";
 
 const Label = ({ children }: { children: React.ReactNode }) => (
@@ -78,6 +79,9 @@ export const MobileMenu = () => {
         </div>
 
         <div className="flex flex-col gap-5 overflow-y-auto overscroll-contain px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-2">
+          <section aria-label="SINAPSE AI">
+            <CompanyCard />
+          </section>
           <section>
             <Label>/educação</Label>
             <LinkList items={education} numbered />

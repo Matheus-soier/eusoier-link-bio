@@ -24,8 +24,9 @@ Acesse [http://localhost:3000](http://localhost:3000).
 ## Estrutura
 
 Página única, sem scroll (100dvh × 100vw): foto centralizada sobre fundo branco,
-educação à esquerda, parceiro e redes à direita. No mobile, os links ficam numa
-aba em liquid glass aberta pelo botão "Explorar".
+SINAPSE AI e educação à esquerda, parceiro e redes à direita. No mobile, a empresa
+aparece abaixo da apresentação e os links ficam numa aba em liquid glass aberta
+pelo botão "Explorar".
 
 ```
 app/
@@ -34,12 +35,13 @@ app/
   globals.css           # Tokens, liquid glass e animações
 components/site/
   link-list.tsx         # Lista de links com seta e sublinhado no hover
+  company-card.tsx      # Destaque da SINAPSE AI com acesso a sinapse.si
   partner-card.tsx      # Card do parceiro (Hyper)
   mobile-menu.tsx       # Botão "Explorar" + aba com todos os links (mobile)
   scramble-text.tsx     # Efeito de "decodificação" do texto
 components/ui/cn.ts     # Helper clsx + tailwind-merge
 lib/
-  content.ts            # Todo o conteúdo: perfil, educação, parceiro, redes
+  content.ts            # Todo o conteúdo: perfil, empresa, educação, parceiro, redes
 public/brand/           # Foto recortada, logos da Hyper e da SNPS
 ```
 
