@@ -2,7 +2,6 @@ import { LinkList } from "@/components/site/link-list";
 import { MobileMenu } from "@/components/site/mobile-menu";
 import { HeadTracker } from "@/components/site/head-tracker";
 import { PartnerCard } from "@/components/site/partner-card";
-import { CompanyCard } from "@/components/site/company-card";
 import { ScrambleText } from "@/components/site/scramble-text";
 import { education, profile, socials } from "@/lib/content";
 
@@ -35,7 +34,7 @@ export default function HomePage() {
 
       {/* Head that turns toward the pointer, anchored to the bottom and centered */}
       <div
-        className="reveal absolute bottom-0 left-1/2 aspect-[960/860] h-[min(76dvh,calc(100dvh-290px))] -translate-x-1/2 md:h-[86dvh] md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_bottom,#000_60%,transparent_95%),linear-gradient(to_right,transparent,#000_18%,#000_82%,transparent)]"
+        className="reveal absolute bottom-0 left-1/2 aspect-[960/860] h-[76dvh] -translate-x-1/2 md:h-[86dvh] md:[mask-composite:intersect] md:[mask-image:linear-gradient(to_bottom,#000_60%,transparent_95%),linear-gradient(to_right,transparent,#000_18%,#000_82%,transparent)]"
         style={delay(150)}
       >
         <HeadTracker alt={`Foto de ${profile.name}`} className="absolute inset-0" />
@@ -62,32 +61,24 @@ export default function HomePage() {
         </a>
       </header>
 
-      {/* Mobile introduction and company highlight */}
-      <div
-        className="reveal absolute inset-x-5 top-[88px] z-20 max-w-[22rem] md:hidden"
+      {/* Mobile headline */}
+      <p
+        className="reveal absolute inset-x-5 top-[88px] z-20 max-w-[18rem] text-[22px] font-medium leading-[1.15] tracking-[-0.03em] md:hidden"
         style={delay(100)}
       >
-        <p className="max-w-[18rem] text-[22px] font-medium leading-[1.15] tracking-[-0.03em]">
-          {profile.headline}
-        </p>
-        <div className="mt-4">
-          <CompanyCard />
-        </div>
-      </div>
+        {profile.headline}
+      </p>
 
       {/* Left column: headline + education */}
       <aside
-        className="desktop-intro reveal absolute left-8 top-1/2 z-20 hidden w-[clamp(220px,19vw,270px)] -translate-y-1/2 md:block"
+        className="reveal absolute left-8 top-1/2 z-20 hidden w-[clamp(220px,19vw,270px)] -translate-y-1/2 md:block"
         style={delay(300)}
       >
         <p className="text-[24px] font-medium leading-[1.1] tracking-[-0.035em]">
           {profile.headline}
         </p>
         <p className="mt-3 text-[13px] leading-relaxed text-ink/55">{profile.bio}</p>
-        <div className="mt-5">
-          <CompanyCard />
-        </div>
-        <div className="mt-6">
+        <div className="mt-8">
           <Label>/educação</Label>
           <LinkList items={education} numbered />
         </div>

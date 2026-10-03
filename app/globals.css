@@ -87,42 +87,14 @@ body {
   }
 }
 
-/* Keep the company and education links clear of the header on short laptops. */
-@media (min-width: 768px) and (max-height: 700px) {
-  .desktop-intro > p:first-child {
-    font-size: 20px;
-  }
-
-  .desktop-intro > p:nth-child(2) {
-    margin-top: 8px;
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .desktop-intro > div {
-    margin-top: 12px;
-  }
-
-  .desktop-intro .company-card {
-    padding: 12px;
-  }
-
-  .desktop-intro .company-eyebrow {
-    display: none;
-  }
-
-  .desktop-intro .company-name {
-    margin-top: 0;
-    font-size: 20px;
-  }
-
-  .desktop-intro .company-cta {
-    margin-top: 8px;
-    padding-top: 8px;
-  }
-
-  .desktop-intro li > a {
-    padding-block: 8px;
+/* Keep Explore legible over the portrait's white desktop fade. */
+@media (min-width: 768px) {
+  .explore-button {
+    background: var(--ink);
+    border-color: var(--ink);
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 

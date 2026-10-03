@@ -47,9 +47,9 @@ export const education: LinkItem[] = [
 ];
 
 export const company = {
-  name: "SINAPSE AI",
+  name: "SINAPSE",
   tagline: "A Nova Era da Super Inteligência",
-  label: "Minha empresa",
+  logo: { src: "/brand/sinapse-wordmark-official.svg", width: 668, height: 47 },
   cta: "Conhecer a SINAPSE",
   href: "https://sinapse.si/",
 };
