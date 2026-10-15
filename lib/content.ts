@@ -26,6 +26,11 @@ export const profile = {
 
 export const education: LinkItem[] = [
   {
+    name: "T04 · Mentoria em Grupo",
+    meta: "SINAPSE School · Lista de espera",
+    href: "https://sinapse.si/school",
+  },
+  {
     name: "Guias gratuitos",
     meta: "Grátis · passo a passo",
     href: "https://snps.ai/guias",

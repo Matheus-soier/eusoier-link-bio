@@ -87,17 +87,6 @@ body {
   }
 }
 
-/* Keep Explore legible over the portrait's white desktop fade. */
-@media (min-width: 768px) {
-  .explore-button {
-    background: var(--ink);
-    border-color: var(--ink);
-    box-shadow: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

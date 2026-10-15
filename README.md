@@ -24,9 +24,13 @@ Acesse [http://localhost:3000](http://localhost:3000).
 ## Estrutura
 
 Página única, sem scroll (100dvh × 100vw): foto centralizada sobre fundo branco,
-educação à esquerda, parceiro e redes à direita. O botão "Explorar" abre uma aba
-com todos os links no computador e no celular. O card da SINAPSE aparece apenas
-nessa aba, com a logo oficial e acesso ao site da empresa.
+SINAPSE e educação à esquerda, parceiro e redes à direita. No celular, o botão
+"Explorar" abre uma aba com todos os links. No desktop, os links ficam diretamente
+nas laterais, sem esse botão. O card da SINAPSE usa a logo oficial e leva ao site
+da empresa; a primeira opção de educação é a lista de espera da T04 da Mentoria
+em Grupo da SINAPSE School, em `https://sinapse.si/school`.
+Em janelas de desktop com pouca altura, as colunas laterais têm rolagem própria
+para não sobrepor o cabeçalho e o rodapé.
 
 ```
 app/
