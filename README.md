@@ -31,6 +31,9 @@ da empresa; a primeira opção de educação é a lista de espera da T04 da Ment
 em Grupo da SINAPSE School, em `https://sinapse.si/school`.
 Em janelas de desktop com pouca altura, as colunas laterais têm rolagem própria
 para não sobrepor o cabeçalho e o rodapé.
+No menu mobile, a mentoria em grupo da T04 é o primeiro link e tem um card de
+destaque com título maior e o CTA “Entrar na lista de espera”. Os demais links
+de educação vêm em seguida, antes da SINAPSE, do parceiro e das redes.
 
 ```
 app/

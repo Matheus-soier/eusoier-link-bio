@@ -13,6 +13,8 @@ const Label = ({ children }: { children: React.ReactNode }) => (
   <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/45">{children}</p>
 );
 
+const [groupMentorship, ...otherEducation] = education;
+
 // Compact screens use a link sheet; desktop links are visible in the side columns.
 export const MobileMenu = () => {
   const [open, setOpen] = useState(false);
@@ -118,12 +120,33 @@ export const MobileMenu = () => {
           ref={contentRef}
           className="flex flex-col gap-5 overflow-y-auto overscroll-contain px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-2"
         >
-          <section aria-label={company.name}>
-            <CompanyCard />
-          </section>
+          <a
+            href={groupMentorship.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-ink p-5 text-white outline-none transition-colors hover:bg-ink/90 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/70 active:bg-ink/80 motion-reduce:transition-none"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/70">
+              SINAPSE School
+            </span>
+            <h2 className="mt-3 max-w-[16rem] text-[28px] font-semibold leading-[1.1] tracking-[-0.035em]">
+              {groupMentorship.name}
+            </h2>
+            <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/20 pt-4">
+              <span className="text-[14px] font-medium">Entrar na lista de espera</span>
+              <ArrowUpRight
+                size={20}
+                aria-hidden="true"
+                className="shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
+              />
+            </div>
+          </a>
           <section>
             <Label>/educação</Label>
-            <LinkList items={education} numbered />
+            <LinkList items={otherEducation} />
+          </section>
+          <section aria-label={company.name}>
+            <CompanyCard />
           </section>
           <section>
             <Label>/parceiro</Label>
