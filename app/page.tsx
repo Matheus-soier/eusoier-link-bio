@@ -2,6 +2,7 @@ import { LinkList } from "@/components/site/link-list";
 import { MobileMenu } from "@/components/site/mobile-menu";
 import { HeadTracker } from "@/components/site/head-tracker";
 import { PartnerCard } from "@/components/site/partner-card";
+import { CompanyCard } from "@/components/site/company-card";
 import { ScrambleText } from "@/components/site/scramble-text";
 import { education, profile, socials } from "@/lib/content";
 
@@ -69,15 +70,12 @@ export default function HomePage() {
         {profile.headline}
       </p>
 
-      {/* Left column: headline + education */}
+      {/* Left column: SINAPSE + education */}
       <aside
-        className="reveal absolute left-8 top-1/2 z-20 hidden w-[clamp(220px,19vw,270px)] -translate-y-1/2 md:block"
+        className="reveal absolute left-8 top-1/2 z-20 hidden max-h-[calc(100dvh-10rem)] w-[clamp(220px,19vw,270px)] -translate-y-1/2 overflow-y-auto [scrollbar-width:thin] md:block"
         style={delay(300)}
       >
-        <p className="text-[24px] font-medium leading-[1.1] tracking-[-0.035em]">
-          {profile.headline}
-        </p>
-        <p className="mt-3 text-[13px] leading-relaxed text-ink/55">{profile.bio}</p>
+        <CompanyCard />
         <div className="mt-8">
           <Label>/educação</Label>
           <LinkList items={education} numbered />
@@ -86,7 +84,7 @@ export default function HomePage() {
 
       {/* Right column: partner + socials */}
       <aside
-        className="reveal absolute right-8 top-1/2 z-20 hidden w-[clamp(220px,19vw,270px)] -translate-y-1/2 md:block"
+        className="reveal absolute right-8 top-1/2 z-20 hidden max-h-[calc(100dvh-10rem)] w-[clamp(220px,19vw,270px)] -translate-y-1/2 overflow-y-auto [scrollbar-width:thin] md:block"
         style={delay(400)}
       >
         <Label>/parceiro</Label>

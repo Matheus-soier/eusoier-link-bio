@@ -13,7 +13,7 @@ const Label = ({ children }: { children: React.ReactNode }) => (
   <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/45">{children}</p>
 );
 
-// Explore opens the same link sheet on mobile and desktop.
+// Compact screens use a link sheet; desktop links are visible in the side columns.
 export const MobileMenu = () => {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -27,6 +27,11 @@ export const MobileMenu = () => {
 
   useEffect(() => {
     if (!open) return;
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const onViewportChange = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", onViewportChange);
     if (contentRef.current) contentRef.current.scrollTop = 0;
     // Focus once the sheet has slid in; preventScroll stops iOS from jumping the page.
     const focus = window.setTimeout(() => closeRef.current?.focus({ preventScroll: true }), 450);
@@ -55,11 +60,12 @@ export const MobileMenu = () => {
     return () => {
       window.clearTimeout(focus);
       window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onViewportChange);
     };
   }, [open, closeMenu]);
 
   return (
-    <div>
+    <div className="md:hidden">
       <button
         ref={triggerRef}
         type="button"
